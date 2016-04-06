@@ -29,13 +29,13 @@ repositories {
 Also, you need to include the following dependency:
 
 ```Java
-compile ('com.screenz:shell_library:VERSION@aar'){
+compile ('com.screenz:shell_library:[VERSION]@aar'){
     transitive=true;
 }
 ```
 
-**Important : change VERSION by the framework's version you want to use**
- 
+**Important : Replace [VERSION] with the framework's version you want to use**
+
 And finally, need to download and add the [DisneyIDWebClientLib-2.0.10.aar](sample/libs/DisneyIDWebClientLib-2.0.10.aar) file and copy it
 to your libs folder.
 
