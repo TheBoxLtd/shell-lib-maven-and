@@ -14,6 +14,7 @@ In order to make your own Screenz client we will guide you through the following
 
 First of all, create an Android project if you don't have one. After that, add the following on your project (app generally called) build.gradle file:
 
+```Java
 repositories {
     maven {
         url "https://raw.github.com/TheBoxLtd/shell-lib-maven-and/master/"
@@ -23,12 +24,15 @@ repositories {
         dirs 'libs'
     }
 }
+```
 
 Also, you need to include the following dependency:
 
+```Java
 compile ('com.screenz:shell_library:VERSION@aar'){
     transitive=true;
 }
+```
 
 **Important : change VERSION by the framework's version you want to use**
  
