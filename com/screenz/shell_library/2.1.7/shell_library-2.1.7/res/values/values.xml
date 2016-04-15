@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <bool name="isTablet">false</bool>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <drawable name="small_notification_icon">@null</drawable>
+    <string name="app_name">Fablife-library</string>
+    <string name="com.crashlytics.android.build_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">4ef70695-c918-43ea-a550-d0d337c147c6</string>
+    <string name="no_activity_found_for_action">No action was found to complete this action</string>
+    <string name="qa_dialog_baseurl_hint">Base URL</string>
+    <string name="qa_dialog_button">OK</string>
+    <string name="qa_dialog_mode_text">QA Mode</string>
+    <string name="qa_dialog_pid_hint">PID</string>
+    <string name="qa_dialog_weburl_hint">Webview URL</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+</resources>
