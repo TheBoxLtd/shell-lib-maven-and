@@ -19,6 +19,7 @@ repositories {
     maven {
         url "https://raw.github.com/TheBoxLtd/shell-lib-maven-and/master/"
     }
+    maven { url 'https://dl.bintray.com/drummer-aidan/maven'}
     maven { url 'https://maven.fabric.io/public' }
     flatDir {
         dirs 'libs'
@@ -36,10 +37,8 @@ compile ('com.screenz:shell_library:[VERSION]@aar'){
 
 **Important : Replace [VERSION] with the framework's version you want to use**
 
-And finally, need to download and add the [DisneyIDWebClientLib-2.0.10.aar](sample/libs/DisneyIDWebClientLib-2.0.10.aar) file and copy it
-to your libs folder.
 
-**Important: the framework requires SDK version 23 and minSdkVersion 15**
+**Important: the framework requires SDK version 24 and minSdkVersion 15**
 
 #### Configuring the Framework
 
