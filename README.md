@@ -59,7 +59,6 @@ requires a configuration of its own, and that's why we see a setter for each one
 
     ConfigManager configManager = ConfigManager.getInstance();
     configManager.setFacebookData(facebook);
-    configManager.setDisneyData(disney);
     configManager.setGooglePlusData(google);
     configManager.setInstagramData(instagram);
     configManager.setTwitterData(twitter);
