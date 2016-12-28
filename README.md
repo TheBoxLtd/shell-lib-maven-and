@@ -95,6 +95,8 @@ public class CoreData implements SetUpData {
     public String newRelicAppKey;//Key for New Relic
 
     public boolean waitForPageLoadEvent = true;// Flag to indicate if the framework will wait for a page load event while playing the dynamic splash. True by default.
+    
+    public String video_upload_key;//API Key for the upload video service (like cameraTag API key)
 }
 
 
