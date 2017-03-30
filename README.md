@@ -110,6 +110,22 @@ public class CoreData implements SetUpData {
     configManager.setCoreData(coreData);
 
 ```
+#### Adding permissions to Android Manifest
+
+Need to add the following permissions to the app manifest:
+
+```xml
+
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
+
+```
 
 
 #### Displaying the Framework
