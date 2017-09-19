@@ -128,6 +128,17 @@ Need to add the following permissions to the app manifest:
 ```
 
 
+#### Sending Data to the webview
+
+You can send any data that the webview needs to consume using the following method:
+ 
+```
+configManager.setExtraData(this,"data to store");
+```
+
+In this examle, the webview will have access to "data to store" when is run.
+This data needs to be set before launching the framework
+
 #### Displaying the Framework
 
 Now that you have the framework already setup, you are able to display it. To do so, you need to invoke
