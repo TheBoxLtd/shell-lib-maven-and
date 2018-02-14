@@ -132,8 +132,14 @@ Need to add the following permissions to the app manifest:
 
 You can send any data that the webview needs to consume using the following method:
  
-```
+```Java
 configManager.setExtraData(this,"data to store");
+```
+
+You can also set the page to be opened and pid with these methods:
+```Java
+configManager.setLaunchPageID(this,"[PAGEID]");
+configManager.setPid(this,[PID]);
 ```
 
 In this examle, the webview will have access to "data to store" when is run.
