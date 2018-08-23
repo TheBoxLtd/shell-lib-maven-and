@@ -1,4 +1,5 @@
 # Screenz SDK
+## [~>3.0]
 
 Screenz SDK allows you to implement your own Screenz client that will live in the Screenz environment.
 
@@ -20,7 +21,6 @@ repositories {
         url "https://raw.github.com/TheBoxLtd/shell-lib-maven-and/master/"
     }
     maven { url 'https://dl.bintray.com/drummer-aidan/maven'}
-    maven { url 'https://maven.fabric.io/public' }
     flatDir {
         dirs 'libs'
     }
@@ -30,7 +30,7 @@ repositories {
 Also, you need to include the following dependency:
 
 ```Java
-compile ('com.screenz:shell_library:[VERSION]@aar'){
+implementation ('com.screenz:shell_library:[VERSION]@aar'){
     transitive=true;
 }
 ```
@@ -38,7 +38,23 @@ compile ('com.screenz:shell_library:[VERSION]@aar'){
 **Important : Replace [VERSION] with the framework's version you want to use**
 
 
-**Important: the framework requires SDK version 24 and minSdkVersion 15**
+**Important: the framework requires SDK version 28 and minSdkVersion 19**
+
+Is mandatory to include the following libraries in the application gradle (use the higher version available at the moment):
+
+```
+implementation 'com.google.android.gms:play-services-location:15.0.1'
+implementation 'com.google.firebase:firebase-core:16.0.1'
+implementation 'com.google.firebase:firebase-messaging:17.3.0'
+```
+
+If you want to use HockeyApp or AppsFlyer you need to include those dependencies in your gradle. The framework will use any of them if they are available.
+
+```
+implementation 'net.hockeyapp.android:HockeySDK:5.1.0'
+
+implementation 'com.appsflyer:af-android-sdk:4.8.13@aar'
+```
 
 #### Configuring the Framework
 
@@ -84,15 +100,13 @@ public class CoreData implements SetUpData {
 
     public boolean productionEnvironment = true;//Flag to indicate against which environment the framework must run. True by default
 
-    public List<Integer> pids;//Your Application Identifier(s)
+    public int pid;//Your Application Identifier
 
     public String gcmSenderId;//SENDER_ID used for push notifications
 
     public String noInternetMessage;//Message to display when no internet access
 
     public String hockeyAppKey;//Key for Hockey App
-
-    public String newRelicAppKey;//Key for New Relic
 
     public boolean waitForPageLoadEvent = true;// Flag to indicate if the framework will wait for a page load event while playing the dynamic splash. True by default.
     
@@ -132,18 +146,33 @@ Need to add the following permissions to the app manifest:
 
 You can send any data that the webview needs to consume using the following method:
  
-```Java
-configManager.setExtraData(this,"data to store");
 ```
-
-You can also set the page to be opened and pid with these methods:
-```Java
-configManager.setLaunchPageID(this,"[PAGEID]");
-configManager.setPid(this,[PID]);
+configManager.setExtraData(this,"data to store");
 ```
 
 In this examle, the webview will have access to "data to store" when is run.
 This data needs to be set before launching the framework
+
+#### Receiving Data from the webview
+
+In order to receive data from the webview you need to setup a broadcast receiver for the PUBLISH_DATA event.
+
+This can be done, for example, like this:
+
+```Java
+IntentFilter intentFilter = new IntentFilter(Constants.Event.PUBLISH_DATA);
+registerReceiver(dataReceiver , intentFilter);
+
+BroadcastReceiver dataReceiver = new BroadcastReceiver() {
+   @Override
+   public void onReceive(Context context, Intent intent) {
+       String data = intent.getStringExtra(Constants.Event.PUBLISH_DATA_PARAMETER);
+       Log.d("DATA RECEIVER",data);
+   }
+};
+```
+
+Take notice that you need to register the broadcast to the Constants.Event.PUBLISH_DATA event, and read the data from the parameter Constants.Event.PUBLISH_DATA_PARAMETER.
 
 #### Displaying the Framework
 
@@ -192,30 +221,11 @@ the activity and not the framework, therefore the following code must be added i
 
 #### Push Notifications
 
-To receive push notifications you will need to add the following tag to your Android Manifest file
+Notifications are handled by FCM (Firebase Cloud Messaging).
 
+In order to configure notifications you must provide the configuration file from Firebase Console. The framework should take care of the rest.
 
-```xml
-
-<receiver
-    android:name="com.google.android.gms.gcm.GcmReceiver"
-    android:exported="true"
-    android:permission="com.google.android.c2dm.permission.SEND">
-    <intent-filter>
-        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-        <category android:name="YOUR_PACKAGE_NAME" />
-    </intent-filter>
-</receiver>
-
-```
-
-**Please before copy and pasting it change 'YOUR_PACKAGE_NAME' for your application's package name**
-
-You will need to add a icon named "small_icon.png" in your assets folder to display it as the big image which appears once the notification is displayed to the user,
-and also an image in your res/drawable (or one per density if you want to) named "small_notification_icon.png" used to display while your notification appears in the navigation bar.
-
-
-**When the user clicks on the notification, you application will be opened using the launcher activity**
+Check https://firebase.google.com/docs/android/setup for setup instructions
 
 #### Proguard
 
@@ -249,8 +259,5 @@ If your application has proguard enabled, you need to add the following:
 #Picasso
 -dontwarn com.squareup.okhttp.**
 
-#New Relic
--keep class com.newrelic.** { *; }
--dontwarn com.newrelic.**
 -keepattributes Exceptions, Signature, InnerClasses, LineNumberTable
 ```
