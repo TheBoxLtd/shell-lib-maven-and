@@ -141,13 +141,19 @@ Need to add the following permissions to the app manifest:
 
 ```
 
-
 #### Sending Data to the webview
 
 You can send any data that the webview needs to consume using the following method:
  
 ```
 configManager.setExtraData(this,"data to store");
+```
+
+You can also set the page to be opened and pid with these methods:
+
+```
+configManager.setLaunchPageID(this,"[PAGEID]");
+configManager.setPid(this,[PID]);
 ```
 
 In this examle, the webview will have access to "data to store" when is run.
@@ -174,6 +180,11 @@ BroadcastReceiver dataReceiver = new BroadcastReceiver() {
 
 Take notice that you need to register the broadcast to the Constants.Event.PUBLISH_DATA event, and read the data from the parameter Constants.Event.PUBLISH_DATA_PARAMETER.
 
+#### Exit SDK Event
+
+Using the described above receiver, the webview will request to exit with the data 'sdk-exit-new'.
+You should subscribe to this event, close the sdk when received and handle the views lifecycle accordingly 
+
 #### Displaying the Framework
 
 Now that you have the framework already setup, you are able to display it. To do so, you need to invoke
@@ -182,7 +193,6 @@ the ShellLibraryBuilder class to get a fragment (android.support.v4.app.Fragment
 ```Java
 
 Fragment fragment = ShellLibraryBuilder.create(context);
-
 
 ```
 
