@@ -3,7 +3,7 @@
   <groupId>com.screenz</groupId>
   <artifactId>shell_library</artifactId>
   <versioning>
-    <release>3.1.10b</release>
+    <release>3.1.10c</release>
     <versions>
       <version>1.0.1</version>
       <version>1.0.2</version>
@@ -59,7 +59,8 @@
       <version>3.1.12</version>
       <version>3.1.13</version>
       <version>3.1.10b</version>
+      <version>3.1.10c</version>
     </versions>
-    <lastUpdated>20190924152140</lastUpdated>
+    <lastUpdated>20190926000601</lastUpdated>
   </versioning>
 </metadata>
