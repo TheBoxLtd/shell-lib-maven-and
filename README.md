@@ -100,7 +100,7 @@ public class CoreData implements SetUpData {
 
     public boolean productionEnvironment = true;//Flag to indicate against which environment the framework must run. True by default
 
-    public int pid;//Your Application Identifier
+    public List<Integer> pids;//Your Application Identifier
 
     public String gcmSenderId;//SENDER_ID used for push notifications
 
