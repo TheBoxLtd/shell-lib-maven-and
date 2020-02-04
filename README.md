@@ -1,5 +1,5 @@
 # Screenz SDK
-## [~>3.0]
+## [~>4.0]
 
 Screenz SDK allows you to implement your own Screenz client that will live in the Screenz environment.
 
