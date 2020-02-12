@@ -13,17 +13,16 @@ In order to make your own Screenz client we will guide you through the following
 
 #### Adding the Screenz Framework
 
-First of all, create an Android project if you don't have one. After that, add the following on your project (app generally called) build.gradle file:
+Create an Android project if you don't have one. After that, add the following in your project build.gradle file:
 
 ```Java
 repositories {
     maven {
         url "https://raw.github.com/TheBoxLtd/shell-lib-maven-and/master/"
     }
-    maven { url 'https://dl.bintray.com/drummer-aidan/maven'}
-    flatDir {
-        dirs 'libs'
-    }
+    jcenter()
+    maven { url "https://jitpack.io" }
+    maven { url 'https://artifactory.img.ly/artifactory/imgly' } 
 }
 ```
 
