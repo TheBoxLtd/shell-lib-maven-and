@@ -42,9 +42,8 @@ implementation ('com.screenz:shell_library:[VERSION]@aar'){
 Is mandatory to include the following libraries in the application gradle (use the higher version available at the moment):
 
 ```
-implementation 'com.google.android.gms:play-services-location:15.0.1'
-implementation 'com.google.firebase:firebase-core:16.0.1'
-implementation 'com.google.firebase:firebase-messaging:17.3.0'
+implementation 'com.google.android.gms:play-services-location:17.0.1'
+implementation 'com.google.firebase:firebase-messaging:20.1.0'
 ```
 
 If you want to use HockeyApp or AppsFlyer you need to include those dependencies in your gradle. The framework will use any of them if they are available.
